@@ -25,3 +25,13 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+La estructura de nuestro recurso “users” hasta ahora sería la siguiente:
+# apirestful.app =  Nuestro host virtual creado
+
+GET    apirestful.app/user         // devuelve lista de usuarios
+GET    apirestful.app/user/{user}  // devuelve los datos de un usuario
+POST   apirestful.app/user         // maneja la creación de usuarios
+PUT    apirestful.app/user/{user}  // edición de usuarios
+DELETE apirestful.app/user/{user}  // eliminar a un usuario

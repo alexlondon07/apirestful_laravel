@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler
        {
            if ($e instanceof ModelNotFoundException) {
                $e = new NotFoundHttpException($e->getMessage(), $e);
-               return \Response::json(['error' => 'Model not found'], 404);
+               return \Response::json(['error' => 'Sorry, we can\'t find that.'], 404);
            }
            return parent::render($request, $e);
        }

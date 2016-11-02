@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return User::all();
     }
 
     /**
@@ -36,28 +36,6 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //  public function store(Request $request)
-    //  {
-    //      // Creamos las reglas de validación
-    //      $rules = [
-    //          'name'      => 'required',
-    //          'email'     => 'required|email',
-    //          'password'  => 'required'
-    //          ];
-     //
-    //      // Ejecutamos el validador, en caso de que falle devolvemos la respuesta
-    //      $validator = \Validator::make($request->all(), $rules);
-    //      if ($validator->fails()) {
-    //          return [
-    //              'created' => false,
-    //              'errors'  => $validator->errors()->all()
-    //          ];
-    //      }
-     //
-    //      User::create($request->all());
-    //      return ['created' => true];
-    //  }
-    //
     public function store(Request $request)
     {
         if (!is_array($request->all())) {
@@ -94,10 +72,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-         return User::findOrFail($id);
-    }
+    public function show(User $user)
+     {
+         return $user;
+     }
 
     /**
      * Show the form for editing the specified resource.
