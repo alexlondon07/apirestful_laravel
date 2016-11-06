@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// create, update (GET) no son necesarios ya que estos se encargan sólo de mostrar un formulario o una vista,
-// por lo cual tal vez la mejor opción sería excluir estas rutas;
-Route::resource('user', 'UserController',
-                ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+//Route User
+Route::group(['prefix' => 'v1'], function () {
+    Route::resource('user', 'UserController',
+                    ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+});
