@@ -30,8 +30,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 La estructura de nuestro recurso “users” hasta ahora sería la siguiente:
 # apirestful.app =  Nuestro host virtual creado
 
-GET    apirestful.app/user         // devuelve lista de usuarios
-GET    apirestful.app/user/{user}  // devuelve los datos de un usuario
-POST   apirestful.app/user         // maneja la creación de usuarios
-PUT    apirestful.app/user/{user}  // edición de usuarios
-DELETE apirestful.app/user/{user}  // eliminar a un usuario
+GET    apirestful.app/api/v1/user         // devuelve lista de usuarios
+GET    apirestful.app/api/v1/user/{user}  // devuelve los datos de un usuario
+POST   apirestful.app/api/v1/user         // maneja la creación de usuarios
+PUT    apirestful.app/api/v1/user/{user}  // edición de usuarios
+DELETE apirestful.app/api/v1/user/{user}  // eliminar a un usuario
