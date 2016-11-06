@@ -46,16 +46,6 @@ class UserTest extends TestCase
   //   $this->post('/user', $data)->dump();
   // }
 
-  /**
-  * Funcion para validar cuando no encuentre un registro de usuario
-  * [testNotFoundUser description]
-  * @return [type] [description]
-  */
-  public function testNotFoundUser()
-  {
-    $this->get('user/10')->seeJsonEquals(['error' => 'Model not found']);
-  }
-
 
   /**
   * Funcion para obtener la informacion basica del usuario

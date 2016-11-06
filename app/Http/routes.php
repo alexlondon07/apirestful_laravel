@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 
 
-//Route User
+//Routes Api
 Route::group(array('prefix' => 'api/v1', 'middleware' => 'cors'), function() {
+    //USER
     Route::resource('user', 'UserController',
+                    ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+
+    //PRODUCT
+    Route::resource('product', 'ProductController',
                     ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
 });

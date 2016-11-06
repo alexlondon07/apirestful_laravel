@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Product;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return Product::all();
     }
 
     /**
@@ -36,35 +36,34 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-     public function store(Request $request)
-     {
-         if (!is_array($request->all())) {
-             return ['error' => 'request must be an array'];
-         }
-         // Creamos las reglas de validación
-         $rules = [
-             'name'      => 'required',
-             'email'     => 'required|email',
-             'password'  => 'required'
-             ];
+    public function store(Request $request)
+    {
+      if (!is_array($request->all())) {
+          return ['error' => 'request must be an array'];
+      }
+      // Creamos las reglas de validación
+      $rules = [
+          'name'      => 'required',
+          'code'  => 'required|code|unique:products,code'
+          ];
 
-         try {
-             // Ejecutamos el validador y en caso de que falle devolvemos la respuesta
-             $validator = \Validator::make($request->all(), $rules);
-             if ($validator->fails()) {
-                 return [
-                     'created' => false,
-                     'errors'  => $validator->errors()->all()
-                 ];
-             }
+      try {
+          // Ejecutamos el validador y en caso de que falle devolvemos la respuesta
+          $validator = \Validator::make($request->all(), $rules);
+          if ($validator->fails()) {
+              return [
+                  'created' => false,
+                  'errors'  => $validator->errors()->all()
+              ];
+          }
 
-             User::create($request->all());
-             return ['created' => true];
-         } catch (Exception $e) {
-             \Log::info('Error creating user: '.$e);
-             return \Response::json(['created' => false], 500);
-         }
-     }
+          Product::create($request->all());
+          return ['created' => true];
+      } catch (Exception $e) {
+          \Log::info('Error creating product: '.$e);
+          return \Response::json(['created' => false], 500);
+      }
+    }
 
     /**
      * Display the specified resource.
@@ -72,9 +71,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+     public function show(Product $product)
      {
-         return $user;
+         return $product;
      }
 
     /**
@@ -97,8 +96,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $user = User::find($id);
-      $user->update($request->all());
+      $product = Product::find($id);
+      $product->update($request->all());
       return ['updated' => true];
     }
 
@@ -110,7 +109,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-      User::destroy($id);
+      Product::destroy($id);
       return ['deleted' => true];
     }
 }
