@@ -25,9 +25,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         parent::boot($router);
-        //vincular o atar un modelo a una ruta, en nuestro caso, el modelo users, products.
-        $router->model('user', 'App\User');
-        $router->model('product', 'App\Product');
     }
 
     /**

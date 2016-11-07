@@ -30,8 +30,21 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 La estructura de nuestro recurso “users” hasta ahora sería la siguiente:
 # apirestful.app =  Nuestro host virtual creado
 
-GET    apirestful.app/api/v1/user         // devuelve lista de usuarios
-GET    apirestful.app/api/v1/user/{user}  // devuelve los datos de un usuario
-POST   apirestful.app/api/v1/user         // maneja la creación de usuarios
-PUT    apirestful.app/api/v1/user/{user}  // edición de usuarios
-DELETE apirestful.app/api/v1/user/{user}  // eliminar a un usuario
++--------+----------+----------------------------+-------------------------+------------------------------------------------+------------+
+| Domain | Method   | URI                        | Name                    | Action                                         | Middleware |
++--------+----------+----------------------------+-------------------------+------------------------------------------------+------------+
+|        | GET|HEAD | /                          |                         | Closure                                        |            |
+|        | GET|HEAD | api/v1/products            | api.v1.products.index   | App\Http\Controllers\ProductController@index   | cors       |
+|        | POST     | api/v1/products            | api.v1.products.store   | App\Http\Controllers\ProductController@store   | cors       |
+|        | GET|HEAD | api/v1/products/{products} | api.v1.products.show    | App\Http\Controllers\ProductController@show    | cors       |
+|        | PUT      | api/v1/products/{products} | api.v1.products.update  | App\Http\Controllers\ProductController@update  | cors       |
+|        | PATCH    | api/v1/products/{products} |                         | App\Http\Controllers\ProductController@update  | cors       |
+|        | DELETE   | api/v1/products/{products} | api.v1.products.destroy | App\Http\Controllers\ProductController@destroy | cors       |
+|        | GET|HEAD | api/v1/users               | api.v1.users.index      | App\Http\Controllers\UserController@index      | cors       |
+|        | POST     | api/v1/users               | api.v1.users.store      | App\Http\Controllers\UserController@store      | cors       |
+|        | GET|HEAD | api/v1/users/{users}       | api.v1.users.show       | App\Http\Controllers\UserController@show       | cors       |
+|        | PUT      | api/v1/users/{users}       | api.v1.users.update     | App\Http\Controllers\UserController@update     | cors       |
+|        | PATCH    | api/v1/users/{users}       |                         | App\Http\Controllers\UserController@update     | cors       |
+|        | DELETE   | api/v1/users/{users}       | api.v1.users.destroy    | App\Http\Controllers\UserController@destroy    | cors       |
+|        | POST     | oauth/access_token         |                         | Closure                                        |            |
++--------+----------+----------------------------+-------------------------+------------------------------------------------+------------+

@@ -16,14 +16,20 @@ Route::get('/', function () {
 });
 
 
+//Get access_token
+Route::post('oauth/access_token', function() {
+ return Response::json(Authorizer::issueAccessToken());
+});
+
 
 //Routes Api
 Route::group(array('prefix' => 'api/v1', 'middleware' => 'cors'), function() {
     //USER
-    Route::resource('user', 'UserController',
+    Route::resource('users', 'UserController',
                     ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
 
     //PRODUCT
-    Route::resource('product', 'ProductController',
+    Route::resource('products', 'ProductController',
                     ['only' => ['index', 'store', 'update', 'destroy', 'show']]);
+
 });
